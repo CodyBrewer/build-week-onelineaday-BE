@@ -3,37 +3,39 @@
 module.exports = {
   development: {
     client: 'sqlite3',
-    connection: {filename: './data/devposts.sqlite3'},
+    connection: { filename: './data/oneLineDB.sqlite3' },
     migrations: {
-      directory: './data/migrations'
+      directory: './data/migrations',
     },
     seeds: {
-      directory: './data/seeds/dev'
+      directory: './data/seeds'
     },
-    useNullAsDefault: true
+    useNullAsDefault: true,
   },
 
-  test: {
-    client: 'pg',
-    connection: 'postgres://localhost/5000',
+  testing: {
+    client: 'sqlite3',
+    connection: {
+      filename: './data/test.db3',
+    },
+    useNullAsDefault: true,
     migrations: {
-      directory: './data/migrations'
+      directory: './data/migrations',
     },
     seeds: {
-      directory: './data/seeds/test'
-    },
-    useNullAsDefault: true
+      directory: './data/seeds',
+    }
   },
 
   production: {
     client: 'pg',
     connection: process.env.DATABASE_URL,
     migrations: {
-      directory: './data/migrations'
+      directory: './data/migrations',
     },
     seeds: {
-      directory: './data/seeds/production'
+      directory: './data/seeds'
     },
-    useNullAsDefault: true
-  }
+    useNullAsDefault: true,
+  },
 };

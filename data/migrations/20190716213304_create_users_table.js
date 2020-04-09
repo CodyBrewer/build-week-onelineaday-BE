@@ -1,5 +1,5 @@
-exports.up = function(knex) {
-  return knex.schema.createTable('users', tbl => {
+exports.up = (knex) => {
+  knex.schema.createTable('users', (tbl) => {
     tbl.increments();
     tbl
       .string('username', 255)
@@ -10,11 +10,11 @@ exports.up = function(knex) {
       .string('email', 255)
       .notNullable()
       .unique();
-    tbl.string('phone number').unique();
+    tbl.string('phone').unique();
     tbl.date('birthdate').notNullable();
   });
 };
 
-exports.down = function(knex) {
-  return knex.schema.dropTableIfExists('users');
+exports.down = (knex) => {
+  knex.schema.dropTableIfExists('users');
 };
